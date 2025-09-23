@@ -14,26 +14,26 @@ Go to search bar and type http://localhost:8080/h2-console the credentials, driv
 <h3>Examples of endpoints</h3>
 Subscription:
 {
-    "id": 1,
-    "type": "Netflix",
-    "startDate": "2025-09-23",
-    "endDate": "2025-09-29",
-    "user": {
-      "id": 1,
-      "name": "Juanito",
-      "email": "juanito@email.com",
-      "createdAt": "2025-09-22T17:27:53.037759"
-    },
-    "active": false,
-    "valid": true
-  }
-  User:
-    {
-        "id": 1,
-        "name": "Juanito",
-        "email": "juanito@email.com",
-        "createdAt": "2025-09-22T17:27:53.037759"
-    }
+    "id": 1,<br>
+    "type": "Netflix", <br>
+    "startDate": "2025-09-23", <br>
+    "endDate": "2025-09-29",<br>
+    "user": {<br>
+      "id": 1,<br>
+      "name": "Juanito", <br>
+      "email": "juanito@email.com",<br>
+      "createdAt": "2025-09-22T17:27:53.037759"<br>
+    },<br>
+    "active": false,<br>
+    "valid": true<br>
+  }<br>
+  User:<br>
+    {<br>
+        "id": 1,<br>
+        "name": "Juanito",<br>
+        "email": "juanito@email.com",<br>
+        "createdAt": "2025-09-22T17:27:53.037759"<br>
+    }<br>
 <h3>Authors</h3>
  Ever Gabriel Cabezas Alfaro,
 Luis Enrique Cartagena Arteaga
