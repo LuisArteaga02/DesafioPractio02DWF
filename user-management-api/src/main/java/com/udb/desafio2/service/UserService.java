@@ -32,4 +32,5 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    // Otros métodos update, delete, etc.
 }

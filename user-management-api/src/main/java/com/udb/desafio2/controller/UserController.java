@@ -4,22 +4,27 @@ import com.udb.desafio2.dto.UserRequestDTO;
 import com.udb.desafio2.entity.User;
 import com.udb.desafio2.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
+@Tag(name = "Users", description = "User management endpoints")
 public class UserController {
+
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostMapping
+    @Operation(summary = "Create user", description = "Create a new user")
+    public ResponseEntity<User> createUser(@RequestBody UserRequestDTO userRequest) {
+        return ResponseEntity.ok(userService.createUser(userRequest));
     }
 
     @GetMapping
@@ -28,20 +33,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping
-    @Operation(summary = "Create a new user")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "User created successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid input data")
-    })
-    public ResponseEntity<User> createUser(@Valid @RequestBody UserRequestDTO userDTO) {
-        return ResponseEntity.ok(userService.createUser(userDTO));
-    }
-
     @GetMapping("/{id}")
+    @Operation(summary = "Get user by ID")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        Optional<User> user = userService.getUserById(id);
-        return user.map(ResponseEntity::ok)
+        return userService.getUserById(id)
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 }
