@@ -5,6 +5,7 @@ import com.udb.desafio2.entity.User;
 import com.udb.desafio2.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class UserController {
 
     @PostMapping
     @Operation(summary = "Create user", description = "Create a new user")
-    public ResponseEntity<User> createUser(@RequestBody UserRequestDTO userRequest) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody UserRequestDTO userRequest) {
         return ResponseEntity.ok(userService.createUser(userRequest));
     }
 

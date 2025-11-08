@@ -5,6 +5,7 @@ import com.udb.desafio2.entity.Subscription;
 import com.udb.desafio2.service.SubscriptionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class SubscriptionController {
 
     @PostMapping
     @Operation(summary = "Create subscription", description = "Create a new subscription for a user")
-    public ResponseEntity<Subscription> createSubscription(@RequestBody SubscriptionRequestDTO subscriptionRequest) {
+    public ResponseEntity<Subscription> createSubscription(@Valid @RequestBody SubscriptionRequestDTO subscriptionRequest) {
         Subscription subscription = subscriptionService.createSubscription(subscriptionRequest);
         return ResponseEntity.ok(subscription);
     }
